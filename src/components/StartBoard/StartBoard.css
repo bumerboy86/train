@@ -1,0 +1,10 @@
+.startBoard {
+  min-width: 320px;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background: url("../../assets//board-bg.jpg") center / cover no-repeat;
+}
