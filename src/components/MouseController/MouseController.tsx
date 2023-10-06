@@ -2,11 +2,20 @@ import { FC } from "react";
 import "./MouseController.css";
 
 type TMouseControllerProps = {
+  lvl: number;
+  curSpeed: number;
   setDir: (data: string) => void;
   dir: string;
+  speedFn: (data: number) => void;
 };
 
-export const MouseController: FC<TMouseControllerProps> = ({ dir, setDir }) => {
+export const MouseController: FC<TMouseControllerProps> = ({
+  lvl,
+  curSpeed,
+  dir,
+  setDir,
+  speedFn,
+}) => {
   const setDirectionHandler = (data: string) => {
     switch (data) {
       case "ArrowRight":
@@ -29,6 +38,12 @@ export const MouseController: FC<TMouseControllerProps> = ({ dir, setDir }) => {
           setDir("down");
         }
         break;
+      case "Pause":
+        speedFn(99999999999);
+        break;
+      case "Start":
+        speedFn(lvl === 1 ? 700 : 750 - lvl * 50);
+        break;
       default:
         break;
     }
@@ -39,6 +54,15 @@ export const MouseController: FC<TMouseControllerProps> = ({ dir, setDir }) => {
       <div>
         <button onClick={() => setDirectionHandler("ArrowLeft")}>left</button>
         <button onClick={() => setDirectionHandler("ArrowRight")}>right</button>
+      </div>
+      <div>
+        <button
+          onClick={() =>
+            setDirectionHandler(curSpeed > 999 ? "Start" : "Pause")
+          }
+        >
+          {curSpeed > 999 ? "Start" : "Pause"}
+        </button>
       </div>
       <div>
         <button onClick={() => setDirectionHandler("ArrowUp")}>up</button>

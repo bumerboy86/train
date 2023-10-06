@@ -18,6 +18,7 @@ function App() {
   const [level, setLevel] = useState(1);
   const [score, setScore] = useState(0);
   const [totalScore, setTotalScore] = useState(0);
+  const [speed, setSpeed] = useState(700);
 
   const generatePassenger = () => {
     const x = Math.floor(Math.random() * BOARD_LENGTH);
@@ -105,11 +106,11 @@ function App() {
   }, [train, direction]);
 
   useEffect(() => {
-    const moveInterval = setInterval(trainMoveHandler, 700 - level * 50);
+    const moveInterval = setInterval(trainMoveHandler, speed);
     return () => {
       clearInterval(moveInterval);
     };
-  }, [trainMoveHandler, level]);
+  }, [trainMoveHandler, level, speed]);
 
   useEffect(() => {
     document.addEventListener("keydown", pressKeyHandler);
@@ -122,9 +123,10 @@ function App() {
     if (train[0].x === passenger.x && train[0].y === passenger.y) {
       setPassenger(generatePassenger());
       setScore((prev) => (prev += 10));
-      if (train.length % 97 === 0) {
+      if (train.length % 3 === 0) {
         if (level < 13) {
           setLevel((prev) => (prev += 1));
+          setSpeed(() => 700 - level * 50);
           setDirection("right");
           setTrain([
             { x: 1, y: 0 },
@@ -191,7 +193,13 @@ function App() {
           </div>
         )}
       </div>
-      <MouseController dir={direction} setDir={setDirection} />
+      <MouseController
+        lvl={level}
+        curSpeed={speed}
+        speedFn={setSpeed}
+        dir={direction}
+        setDir={setDirection}
+      />
     </>
   );
 }
