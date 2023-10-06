@@ -34,12 +34,25 @@ function App() {
     setScore(0);
     setDirection("right");
     setGameOver(false);
+    setSpeed(700);
     setTrain([
       { x: 1, y: 0 },
       { x: 0, y: 0 },
     ]);
     setPassenger(generatePassenger());
     setIsGame(true);
+  };
+
+  const endGameHandler = () => {
+    setLevel(1);
+    setScore(0);
+    setDirection("right");
+    setGameOver(false);
+    setTrain([
+      { x: 1, y: 0 },
+      { x: 0, y: 0 },
+    ]);
+    setIsGame(false);
   };
 
   const isTrainCheck = (element: ITrain, index: number) => {
@@ -172,6 +185,9 @@ function App() {
         <section>
           <p>Level: {level}</p>
           <p>Score: {score}</p>
+          <button className='exit' onClick={endGameHandler}>
+            Exit
+          </button>
         </section>
         {!isGame ? (
           <StartBoard startFn={startGameHandler} tScore={totalScore} />

@@ -3,13 +3,14 @@
   width: 32px;
   height: 32px;
   background: transparent;
+  box-sizing: border-box;
 }
 
 .train::before {
   content: "";
   position: absolute;
-  width: 22px;
-  height: 22px;
+  width: 30px;
+  height: 30px;
   top: 50%;
   left: 50%;
   border-radius: 6px;
@@ -32,4 +33,5 @@
   width: 32px;
   height: 32px;
   background: url("../../assets/train.svg") center / contain no-repeat;
+  background-size: 130%;
 }
