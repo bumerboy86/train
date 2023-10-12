@@ -136,7 +136,7 @@ function App() {
     if (train[0].x === passenger.x && train[0].y === passenger.y) {
       setPassenger(generatePassenger());
       setScore((prev) => (prev += 10));
-      if (train.length % 3 === 0) {
+      if (train.length % 97 === 0) {
         if (level < 13) {
           setLevel((prev) => (prev += 1));
           setSpeed(() => 700 - level * 50);
