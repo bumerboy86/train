@@ -5,8 +5,8 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  background: linear-gradient(45deg, #898ea5 0%, #0575e6 40%, #00f260 90%);
+  background-repeat: no-repeat;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -21,8 +21,7 @@ body {
   display: flex;
   place-items: center;
   min-width: 320px;
-  min-height: 100dvh;
+  min-height: 100vh;
   align-items: center;
   justify-content: center;
-  background: url("./assets/bg.png") center / cover no-repeat;
 }

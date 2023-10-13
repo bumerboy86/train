@@ -1,4 +1,6 @@
 .startBoard {
+  --green: #00f260;
+  --blue: #0575e6;
   min-width: 320px;
   min-height: 320px;
   display: flex;
@@ -6,5 +8,6 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-  background: url("../../assets//board-bg.jpg") center / cover no-repeat;
+  background: linear-gradient(var(--green), var(--blue)) center / cover
+    no-repeat;
 }
